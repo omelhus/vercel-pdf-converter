@@ -1,9 +1,7 @@
 import chrome from 'chrome-aws-lambda'
 import { addExtra } from 'puppeteer-extra'
-import AdblockerPlugin from 'puppeteer-extra-plugin-adblocker'
 
 // Workaround, see https://github.com/berstend/puppeteer-extra/issues/93#issuecomment-712364816
-import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 import ChromeAppPlugin from 'puppeteer-extra-plugin-stealth/evasions/chrome.app'
 import ChromeCsiPlugin from 'puppeteer-extra-plugin-stealth/evasions/chrome.csi'
 import ChromeLoadTimes from 'puppeteer-extra-plugin-stealth/evasions/chrome.loadTimes'
@@ -13,7 +11,7 @@ import MediaCodecsPlugin from 'puppeteer-extra-plugin-stealth/evasions/media.cod
 import NavigatorLanguagesPlugin from 'puppeteer-extra-plugin-stealth/evasions/navigator.languages'
 import NavigatorPermissionsPlugin from 'puppeteer-extra-plugin-stealth/evasions/navigator.permissions'
 import NavigatorPlugins from 'puppeteer-extra-plugin-stealth/evasions/navigator.plugins'
-import NavigatorVendor from 'puppeteer-extra-plugin-stealth/evasions/navigator.vendor'
+import NavigatorVendor from '/evasions/navigator.vendor'
 import NavigatorWebdriver from 'puppeteer-extra-plugin-stealth/evasions/navigator.webdriver'
 import SourceUrlPlugin from 'puppeteer-extra-plugin-stealth/evasions/sourceurl'
 import UserAgentOverridePlugin from 'puppeteer-extra-plugin-stealth/evasions/user-agent-override'
@@ -23,8 +21,6 @@ import WindowOuterDimensionsPlugin from 'puppeteer-extra-plugin-stealth/evasions
 // Configure puppeteer-extra plugins
 const puppeteer = addExtra(chrome.puppeteer)
 const plugins = [
-	AdblockerPlugin({ blockTrackers: true }),
-	StealthPlugin(),
 	ChromeAppPlugin(),
 	ChromeCsiPlugin(),
 	ChromeLoadTimes(),
